@@ -1,0 +1,66 @@
+{% extends 'assimilate/base.html' %}
+
+
+{% block content %}
+
+
+<!--If the current url is post_list, we have to display "My Articles" as the heading.
+If the current url is browse, we have to display "All Articles" as the heading.-->
+
+{% url 'post_list' as the_url %}
+{% if request.get_full_path == the_url %}
+	<div style="background-color:lightblue" align="center">
+		<h1><span class="glyphicon glyphicon-user"></span><u>My Articles</u></h1>
+	</div>
+	
+      
+{% else %}
+	{% url 'browse' as the_url %}
+	{% if request.get_full_path == the_url %}
+		<div style="background-color:lightblue" align="center">
+			<h1><span class="glyphicon glyphicon-sort-by-alphabet"></span><u>    All Articles</u></h1>
+		</div>
+		<br>
+		
+		
+		<div class="container pink"> <br>
+		
+			<form method="get" action="/search" class=" my-2 my-lg-0 mx-3">
+			<div style="float:left;">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query" style="width: 400px; border: 1px solid black;" required>
+				<button class="button" style="height: 40px; 
+							background-color: lightblue; 
+							text-align: center;
+							vertical-align: middle; 
+							border: 1px solid black;
+							color: black;
+							border-radius: 8px;" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+			</div>
+				
+	     		 </form>
+	     		 
+	     		 <h5>Search based on title, author, domain, or content!</h5>
+      		</div>
+      		<br>
+		
+		
+	{% endif %}
+{% endif %}
+
+
+
+
+<div class="container green">
+{% for article in articles %}
+    <article>
+        
+        <h3><a href="{% url 'post_detail' pk=article.pk %}">{{ article.title }}</a></h3>
+        
+    </article>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+

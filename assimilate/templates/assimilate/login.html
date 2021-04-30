@@ -1,0 +1,93 @@
+<!--
+<form method="POST">
+{{form}}{%csrf_token%}
+<button type="submit">Login</button>
+</form>
+-->
+
+<body style="background-color: lightgreen">
+
+
+<head>
+	<title>Assimilate-login</title>
+	
+	
+	<style>
+		.button {
+			  
+			  
+			  display: block;
+		    width: 110px;
+		    height: 50px;
+		    
+		    padding: 5px;
+		    text-align: center;
+		    border-radius: 5px;
+		    border-color: black;
+		    border: 2px solid black;
+		    color: black;
+		    font-weight: bold;
+		    position: absolute;
+		    left: 1570px;
+		    top: 50px;
+		    background-color: lightgreen;
+			  
+			  
+			}
+			
+			.button:hover {
+			  background-color: white;
+			  color: white;
+			}
+	</style>
+</head>
+
+<button class="button" style="display: block;
+    width: 180px;
+    height: 50px;
+    
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    left: 1570px;
+    top: 15px;"> <a href="{% url 'first_page' %}">Back to Landing Page</a></button>
+
+
+
+{% if messages %}
+
+    {% for message in messages %}
+    <div{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red;"><b><i>{{ message }}</i></b></div>
+    {% endfor %}
+
+{% endif %}
+
+
+<div style="background-color: pink;
+		border: 3px solid black;">
+<h2><u><div style="background-color: lightblue">Login</div></u></h2>
+<hr>
+  <form method="POST" autocomplete="off">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: blue; font-size: 12px;">{{ error }}</p>
+        {% endfor %}
+        <hr>
+      </p>
+    {% endfor %}
+    <button type="submit">Login</button>
+  </form>
+</div>
+</body>
+
+

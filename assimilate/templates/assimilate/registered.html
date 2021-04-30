@@ -1,0 +1,98 @@
+<head>
+	<title>Successful Registration</title>
+	
+	
+	<style>
+	
+	.button {
+			  background-color: #4CAF50; /* Green */
+			  border: none;
+			  color: white;
+			  padding: 16px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  transition-duration: 0.4s;
+			  cursor: pointer;
+			}
+
+			.button1 {
+			  background-color: lightgreen; 
+			  color: black; 
+			  border: 2px solid #4CAF50;
+			  
+			  width:180px;
+			  float:left;
+			  height:90px;
+			  vertical-align: middle; 
+			  text-align: center;
+			}
+
+			.button1:hover {
+			  background-color: white;
+			  color: white;
+			}
+	
+	</style>
+	
+</head>
+
+
+<body style= "background-color: lightblue;">
+
+
+<div style= "
+		background-color: pink;
+				
+				
+		vertical-align: middle; 
+		text-align: center;
+		 padding: 70px;
+  		border: 3px solid green;">
+  		
+<h1>SUCCESSFUL REGISTRATION!!!</h1>
+
+<h2>Congratulations, {{ form.name }}!! You are now a 
+{% if form.is_stakeholder %}
+stakeholder! :)
+
+{% else %}
+domain expert! :)
+
+{% endif %}
+</h2>
+
+</div>
+
+  <button class="button button1" style="display: block;
+    width: 110px;
+    height: 50px;
+    
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    left: 1570px;
+    top: 50px;"> <a href="{% url 'logout' %}">Logout</a></button>
+    
+    <button class="button button1" style="display: block;
+    width: 110px;
+    height: 50px;
+    
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    left: 1420px;
+    top: 50px;"> <a href="{% url 'home_page' %}">Homepage</a></button>
+    
+</body>
+
+
+

@@ -1,0 +1,58 @@
+{% extends 'assimilate/base.html' %}
+
+{% block content %}
+
+<div class="container blue">
+
+	<div style="background-color:pink" align="center">
+		<h1><u>Home Page</u></h1>
+	</div>
+
+
+	
+	<button class="button button4">
+	<a href="{% url 'edit_logs' %}"><h3> Edit Logs </h3></a></button>
+
+
+
+	<button class="button button1">
+	<a href="{% url 'post_list' %}"><h3> My Articles </h3></a></button>
+	
+	
+	<button class="button button2">
+	<a href="{% url 'browse' %}"><h3> Browse </h3></a></button>
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+<!--
+<h2><a href="{% url 'post_list' %}"><u> My Articles </u></a></h2>
+<h2><a href="{% url 'browse' %}"><u> Browse </u></a></h2>
+-->
+
+
+<!--
+	<button style="width:180px;
+	float:left;
+	height:50px;
+	vertical-align: middle; 
+	text-align: center;
+	"><a href="{% url 'post_list' %}"><h3> My Articles </h3></a></button>
+	
+	
+	<button style="width: 140px; 
+	float:right;
+	height:50px;
+	vertical-align: middle; 
+	text-align: center;
+	"><a href="{% url 'browse' %}"><h3> Browse </h3></a></button>
+-->
+
+
+
+	

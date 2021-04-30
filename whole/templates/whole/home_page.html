@@ -1,0 +1,37 @@
+{% extends 'whole/base.html' %}
+
+{% block content %}
+
+<h2>home page</h2>
+
+<!--
+<h2><a href="{% url 'post_list' %}"><u> My Articles </u></a></h2>
+<h2><a href="{% url 'browse' %}"><u> Browse </u></a></h2>
+-->
+
+	<button style="width:180px;
+	height:50px;
+	vertical-align: middle; 
+	text-align: center;
+	position:absolute; 
+	left:540px; 
+	top:270px;
+	"><a href="{% url 'edit_logs' %}"><h3>Edit Logs</h3></a></button>
+
+	<button style="width:180px;
+	float:left;
+	height:50px;
+	vertical-align: middle; 
+	text-align: center;
+	"><a href="{% url 'post_list' %}"><h3> My Articles </h3></a></button>
+	
+	
+	<button style="width: 140px; 
+	float:right;
+	height:50px;
+	vertical-align: middle; 
+	text-align: center;
+	"><a href="{% url 'browse' %}"><h3> Browse </h3></a></button>
+
+
+{% endblock %}

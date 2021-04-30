@@ -1,0 +1,85 @@
+{% extends 'assimilate/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'browse' %}">
+<mark style="background-color:lightblue"><span class="glyphicon glyphicon-arrow-left"></span>Back to Browse</mark>
+</a>
+
+<div style="background-color:lightgreen" align="center">
+
+<h1><span class="glyphicon glyphicon-search"></span><u> Search Results </u></h1>
+</div>
+
+ 
+<div class="container pink" style="overflow-wrap: break-word">
+    <h2>Search results for "{{query}}" :</h2>
+    <hr style="border: 3px solid green;">
+    
+    {% if allPosts|length < 1 %}
+    		<p>No search results</p>
+
+	    Your search query: <b> {{query}} </b> did not match any article. <br>
+	    Suggestions:  
+	    <ul>
+	    <li>Make sure that all words are spelled correctly.</li>
+	    <li>Try different keywords.</li>
+	    <li>Try more general keywords.</li>
+	    <li>Try fewer keywords.</li>
+	    </ul>
+    
+    
+    {% elif "too long" in allPosts %}
+    		<p>No search results</p>
+
+	    Your search query: <b> {{query}} </b> was too long. <br>
+	    Suggestions:  
+	    <ul>
+	    <li>Try fewer keywords.</li>
+	    </ul>
+    
+    
+    
+    {% else %}
+    
+    {% for post in allPosts %}
+    
+    
+            <h3><u>{{post.title}}</u></h3>
+            
+            <h4>Written by {{post.user}} </h4>
+            
+            
+            {% if post.published_date %}
+		    <time class="date">
+		    
+		        {{ post.published_date }}
+		        
+		    </time>
+            {% endif %}
+            
+            {% if post.domain %}
+            
+                <h5>Domain: {{ post.domain }}</h5>
+            
+            {% endif %}
+            
+            <p></p>
+            <p>{{post.content| truncatechars:500 }}</p>
+            
+            <a href="{% url 'post_detail' pk=post.pk %}">Continue reading</a>
+           
+        
+    <hr style="border: 2px solid green;">
+
+
+    {% endfor %}
+    
+    {% endif %}
+    
+</div>
+
+{% endblock %}
+
+
+

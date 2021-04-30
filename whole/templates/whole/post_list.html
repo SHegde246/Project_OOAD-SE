@@ -1,0 +1,64 @@
+{% extends 'whole/base.html' %}
+
+
+{% block content %}
+
+
+<!--If the current url is post_list, we have to display "My Articles" as the heading.
+If the current url is browse, we have to display "All Articles" as the heading.-->
+{% url 'post_list' as the_url %}
+{% if request.get_full_path == the_url %}
+	<h1><u>My Articles</u></h1>
+{% endif %}	
+
+
+{% url 'browse' as the_url %}
+{% if request.get_full_path == the_url %}
+	<h1><u>All Articles</u></h1>
+	
+	<form method="POST" autocomplete="off">
+	    {% csrf_token %}
+	    {% for field in form %}
+	      <p>
+		{{ field.label_tag }}<br>
+		{{ field }}
+		{% if field.help_text %}
+		  <small style="color: grey">{{ field.help_text }}</small>
+		{% endif %}
+		{% for error in field.errors %}
+		  <p style="color: blue; font-size: 12px;">{{ error }}</p>
+		{% endfor %}
+		
+	      </p>
+	    {% endfor %}
+	    <button type="submit">Search</button>
+	  </form>
+	  
+	  <hr>
+	  
+{% endif %}
+	
+<!--
+{% url 'search_results' as the_url %}
+{% if request.get_full_path == the_url %}
+	<h1><u>Search Results</u></h1>
+{% endif %}
+-->
+
+
+
+
+
+{% for article in articles %}
+    <article>
+        
+        <h3><a href="{% url 'post_detail' pk=article.pk %}">{{ article.title }}</a></h3>
+        
+    </article>
+{% endfor %}
+
+
+{% endblock %}
+
+
+

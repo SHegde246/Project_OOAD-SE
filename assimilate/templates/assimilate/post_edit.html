@@ -1,0 +1,36 @@
+{% extends 'assimilate/base.html' %}
+
+{% block content %}
+    <div style="background-color:lightgreen" align="center">
+    
+    {% url 'post_new' as the_url %}
+    {% if request.get_full_path == the_url %}	
+    	<h2><u>New Article</u></h2>
+    	
+    {% else %}
+    	<h2><u>Edit Article</u></h2>
+    {% endif %}
+    	
+    
+    </div>
+    
+    <div class="container blue">
+    <form method="POST" class="post-form" autocomplete="off">{% csrf_token %}
+        {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: blue; font-size: 12px;">{{ error }}</p>
+        {% endfor %}
+        <hr>
+      </p>
+    {% endfor %}
+        <button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-floppy-saved"></span>  Save</button>
+        <br/>
+    </form>
+    </div>
+{% endblock %}

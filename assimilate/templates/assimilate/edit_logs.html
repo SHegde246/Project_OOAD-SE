@@ -1,0 +1,55 @@
+{% extends 'assimilate/base.html' %}
+
+
+{% block content %}
+
+<div style="background-color:lightblue" align="center">
+<h1><span class="glyphicon glyphicon-pencil"></span><u>   Edit Logs</u></h1>
+</div>
+<hr style="border: 8px solid lightgreen;">
+
+
+<div class="container pink">
+{% for article in edited_articles %}
+    <article>
+        {% if article.old_title == article.new_title %}
+        	<h3> <b>Title :</b> <i>{{article.old_title}}</i> </h3>
+        	
+        {% else %}
+        	<h3> <b>Title changed 
+        	<br> FROM</b>
+        	<br>  <i>"{{article.old_title}}"</i>  <br>
+        	<b> TO </b><br>
+        	<i> "{{article.new_title}}" </i></h3>
+        
+        {% endif %}
+        
+        
+        
+        {% if article.old_content == article.new_content %}
+        	<h3> <b>No change in content</b> </h3>
+        	
+        {% else %}
+        	<h3> <b>Content changed 
+        	<br> FROM</b> 
+        	<br>  <i>"{{article.old_content}}"</i>
+        	<br><b> TO </b><br> 
+        	<i> "{{article.new_content}}" </i></h3>
+        
+        {% endif %}
+        
+        <br>
+        
+        <h4> Article edited on: {{article.edited_date}} </h4>
+        
+        <hr style="border: 1px solid green">
+        
+    </article>
+{% endfor %}
+</div>
+
+
+
+{% endblock %}
+
+

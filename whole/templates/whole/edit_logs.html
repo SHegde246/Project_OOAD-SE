@@ -1,0 +1,47 @@
+{% extends 'whole/base.html' %}
+
+
+{% block content %}
+
+
+<h1><u>Edit Logs</u></h1>
+<hr style="border: 10px solid green;">
+
+{% for article in edited_articles %}
+    <article>
+        {% if article.old_title == article.new_title %}
+        	<h3> Title : {{article.old_title}} </h3>
+        	
+        {% else %}
+        	<h3> <b>Title changed from</b> "{{article.old_title}}" 
+        	<b> TO </b>
+        	"{{article.new_title}}"</h3>
+        
+        {% endif %}
+        
+        
+        
+        {% if article.old_content == article.new_content %}
+        	<h3> No change in content </h3>
+        	
+        {% else %}
+        	<h3> <b>Content changed from</b> "{{article.old_content}}"
+        	<br><b> TO </b><br> 
+        	"{{article.new_content}}"</h3>
+        
+        {% endif %}
+        
+        <br>
+        
+        <h4> Article edited on: {{article.edited_date}} </h4>
+        
+        <hr style="border: 1px solid green">
+        
+    </article>
+{% endfor %}
+
+
+
+{% endblock %}
+
+

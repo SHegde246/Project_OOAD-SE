@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assimilate</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        
+        <style>
+        		.button {
+			  background-color: #4CAF50; /* Green */
+			  border: none;
+			  color: white;
+			  padding: 16px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 16px;
+			  margin: 4px 2px;
+			  transition-duration: 0.4s;
+			  cursor: pointer;
+			}
+
+
+			/* button 1 used with my articles on home page */
+			.button1 {
+			  background-color: lightgreen; 
+			  color: black; 
+			  border: 2px solid #4CAF50;
+			  
+			  width:180px;
+			  float:left;
+			  height:90px;
+			  vertical-align: middle; 
+			  text-align: center;
+			}
+
+			.button1:hover {
+			  background-color: white;
+			  color: white;
+			}
+			
+			
+			/* button 2 used with browse on home page */
+			.button2 {
+			  background-color: lightgreen; 
+			  color: black; 
+			  border: 2px solid #4CAF50;
+			  
+			  width: 140px; 
+			  float:right;
+			  height:90px;
+			  vertical-align: middle; 
+			  text-align: center;
+			  
+			  
+			}
+			
+			.button2:hover {
+			  background-color: white;
+			  color: white;
+			}
+			
+			
+			/* button 3 used with logout */
+			.button3 {
+			  
+			  
+			  display: block;
+			  width: 110px;
+			  height: 50px;
+			    
+			  padding: 5px;
+			  text-align: center;
+			  border-radius: 5px;
+			  border-color: black;
+			  border: 2px solid black;
+			  color: black;
+			  font-weight: bold;
+			  position: absolute;
+			  left: 1570px;
+			  top: 50px;
+			  background-color: black;
+			 
+			}
+			
+			.button3:hover {
+			  background-color: white;
+			  color: white;
+			}
+			
+	
+	
+	
+			
+			/* button 4 used with edit logs on home page */
+			
+			/* default position next to My Articles-
+				position:absolute; 
+			  	left:540px; 
+			  	top:285px; 
+			/*
+			/* center position on homepage
+				position:absolute; 
+			  	left:832px; 
+			  	top:285px; 
+			*/
+			
+			.button4 {
+			  background-color: lightgreen; 
+			  color: black; 
+			  border: 2px solid #4CAF50;
+			  
+			  width:180px; 
+			  height:90px;
+			  
+			  position:absolute; 
+			  left:832px; 
+			  top:298px;
+			  
+			  vertical-align: middle; 
+			  text-align: center;
+			  
+			  
+			}
+			
+			.button4:hover {
+			  background-color: white;
+			  color: white;
+			}
+			
+			
+			
+			.green{
+				background-color: lightgreen;
+				width: 100%;
+				height: 100%;
+				border: 3px solid black;
+			}
+			
+			.blue{
+				background-color: lightblue;
+				width: 100%;
+				height: 100%;
+				border: 3px solid black;
+			}
+			
+			.pink{
+				background-color: pink;
+				width: 100%;
+				height: 100%;
+				border: 3px solid black;
+			}
+			
+			.white{
+				background-color: white;
+				width: 100%;
+				height: 100%;
+				border: 3px solid black;
+			}
+			
+			
+		
+			
+        
+        </style>
+        
+    </head>
+    <body style="background-image: url('/static/assimilate/image5.png');
+		background-size: 100%;
+		
+		background-position: center center;
+		background-repeat: y-repeat; 
+		">
+        <header class="page-header">
+        
+        
+        
+            <div class="container white">
+            
+            
+            {% if user.is_authenticated %}
+            	<h1><span class="glyphicon glyphicon-home"></span><span style="background-color: lightgreen"><a href="{% url 'home_page' %}">Assimilate</span></a></h1>
+            {% else %}
+            	<h1><span class="glyphicon glyphicon-home"></span><span style="background-color: lightgreen"><a href="{% url 'first_page' %}">Assimilate</span></a></h1>
+            {% endif %}
+            
+            
+            
+            {% if user.is_authenticated %}
+            	<h3><span class="glyphicon glyphicon-user"></span><span style="background-color: pink">Hi, {{user.username}}!!!</span></h3>
+            {% else %}
+            	<h3><span class="glyphicon glyphicon-user"></span><span style="background-color: pink">Hello, Anonymous User!!</span></h3>
+            {% endif %}
+            
+            
+            
+            
+            <!--
+            <h3>{{user.profile.domain}}</h3>
+            -->
+            
+            
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu">
+                <span class="glyphicon glyphicon-plus"></span> <i><span style="background-color: lightblue">Add an article</span></i>
+                </a>
+            
+            
+            
+            
+			<button class="button3"> 
+			
+			<a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>  Logout </a></button>
+	    {% endif %}		    
+            
+           
+            </div>
+        </header>
+        
+        
+        
+        
+        <main class="content container">
+            <div class="row">
+                <div class="col">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <!--<hr style="border: 3px red;">-->
+            <!--<hr style="height:2px;border-width:0;color:gray;background-color:gray">-->
+        </main>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+

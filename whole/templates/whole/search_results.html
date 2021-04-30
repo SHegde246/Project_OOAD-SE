@@ -1,0 +1,29 @@
+{% extends 'whole/base.html' %}
+
+
+{% block content %}
+
+
+<a href="{% url 'browse' %}"><span class="glyphicon glyphicon-arrow-left"></span>Back to Browse</a>
+
+
+<h1><u>Search Results</u></h1>
+
+
+
+{% if articles %}
+	{% for article in articles %}
+	    <article>
+		
+		<h3><a href="{% url 'post_detail' pk=article.pk %}">{{ article.title }}</a></h3>
+		
+	    </article>
+	{% endfor %}
+{% else %}
+	<h2><i>No matching results found. Sorry :(</i></h2>
+	
+{% endif %}
+
+
+{% endblock %}
+

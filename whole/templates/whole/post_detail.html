@@ -1,0 +1,106 @@
+{% extends 'whole/base.html' %}
+
+{% block content %}
+    <article class="post">
+    
+    <!--<h4>
+     <div style=" 
+        left: 1570px;
+    	top: 80px;">
+    	<a href="{% url 'post_list' %}">
+    	<span class="glyphicon glyphicon-arrow-left"></span>
+    	<u>My Articles</u>
+    	</a>
+    </div>
+    </h4>
+    	<hr style="border: 1px solid green;">-->
+    	
+    
+    <!--We're looking at the details of a particular article. There's a "previous page" link on this page.
+    (request.META.HTTP_REFERER stores the previous page's url)
+    Depending on what the previous url is (post_list or browse), we want to change the words on the link-->
+    
+     <div style=" 
+        left: 1570px;
+    	top: 80px;">
+    	<a href="{{ request.META.HTTP_REFERER }}">
+    	
+    	
+    	{% with prev_url="http://localhost:8000/post_list/" %}
+	{% if request.META.HTTP_REFERER == prev_url %}
+		<span class="glyphicon glyphicon-arrow-left"></span>My Articles
+	{% endif %}
+	{% endwith %}
+	
+	
+	{% with prev_url="http://localhost:8000/browse/" %}
+	{% if request.META.HTTP_REFERER == prev_url %}
+		<span class="glyphicon glyphicon-arrow-left"></span>All Articles
+	{% endif %}
+	{% endwith %}
+	
+	
+	{% with prev_url="http://localhost:8000/search_results/" %}
+	{% if request.META.HTTP_REFERER == prev_url %}
+		<span class="glyphicon glyphicon-arrow-left"></span>Search Results
+	{% endif %}
+	{% endwith %}
+	
+	
+	
+	
+    	</a>
+    </div>
+    
+    	<hr style="border: 1px solid green;">
+    	
+    	
+
+    
+    
+    {% if user.is_authenticated %}
+    <!-- All articles get displayed while browsing. Need to make sure user can edit/delete only the articles which they wrote.-->
+    <!--Therefore, need to check if the author(user) of the post = the user who is currently logged in-->
+    	{% if post_user == loggedin_user %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span>  edit</a>
+        <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span> delete</a>
+        {% endif %}
+    {% endif %}
+        
+        
+       
+      {% if user.is_authenticated %}  
+			<button style="display: block;
+		    width: 110px;
+		    height: 50px;
+		    
+		    padding: 5px;
+		    text-align: center;
+		    border-radius: 5px;
+		    color: black;
+		    font-weight: bold;
+		    position: absolute;
+		    left: 1570px;
+		    top: 50px;"> <a href="{% url 'logout' %}">Logout</a></button>
+    {% endif %}
+    
+    
+    <h1><u>{{ post.title }}</u></h1>
+    
+    	<h4>Written by {{ post.user}}</h4>
+    	
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+        {% endif %}
+        
+        
+        
+        <h3>{{ post.content|linebreaksbr }}</h3>
+        
+    </article>
+{% endblock %}
+
+
+

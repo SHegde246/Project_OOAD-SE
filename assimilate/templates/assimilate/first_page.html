@@ -1,0 +1,212 @@
+{% block content %}
+{% load static %}
+<html>
+
+<head>
+	<title>Assimilate-landing</title>
+	
+	<style>
+	
+		.ribbon-highlight{
+		  position:relative;
+		  margin:0.1em;
+		}
+		.ribbon-highlight:before{
+		  content:"";
+		  z-index:-1;
+		  left:-0.5em;
+		  top:0.1em;
+		  border-width:0.5em;
+		  border-style:solid;
+		  border-color:lightgreen;
+		  position:absolute;
+		  width:100%;
+		  border-left-color:transparent;
+		  border-right-color:transparent;
+		}
+		
+		
+	
+	</style>
+</head>
+
+
+<!--works, but no transparency, so made actual image transparent instead-->
+<body style="background-image: url('/static/assimilate/image4.png');
+		background-size: 100%;
+		background-position: center center;
+		background-repeat: no-repeat; 
+		">
+		
+		
+<!--<div style="background: url('/static/assimilate/image.jpeg');
+		background-size: 50%;
+		
+		height: 45%;
+		background-position: center;
+		background-repeat: no-repeat; 
+		opacity: 0.3""></div>		
+		-->
+<!--		
+<div style="background: url('/static/assimilate/image.jpeg');
+		background-size: 50%;
+		
+		height: 45%;
+		background-position: center;
+		background-repeat: no-repeat; 
+		opacity: 0.3;
+		z-index: -1;"></div>
+		-->	
+		
+		
+<div style="background-color:lightblue" align="center"><h1>WELCOME TO ASSIMILATE!!</h1></div>
+<div style="background-color:pink" align="center"><h3>Your very own online knowledge repository!</h3></div>
+
+		
+		
+		
+		
+		<br>
+		<div style="color:green;">
+			<span class="ribbon-highlight">
+			Browse through articles without an account!
+			</span>
+		</div>
+		<br>
+		<button style="width:120px;
+		float:left;
+		height:50px;
+		background-color: lightpink"><a href="{% url 'browse' %}"><u><h2> Browse </h2></u></a></button>
+		
+		
+		
+		
+		<div style="text-align:center;
+		display:inline-block; 
+		margin-top: 170px;
+		float:left;
+		top:30px;
+		color:green;
+		">
+			<p><span class="ribbon-highlight">Welcome back!</span></p>
+			<button style="width:120px;
+				float:left;
+				height:50px;
+				vertical-align: middle; 
+				text-align: center;
+				background-color: lightblue">
+				<a href="{% url 'login' %}"> <h2> Login </h2> </a>
+			</button>
+		</div>
+		
+		
+		<div style="text-align:center;
+		display:inline-block; 
+		margin-top: 170px;
+		
+		float:right;
+		
+		top:30px;
+		color:green;
+		">
+			<p><span class="ribbon-highlight">Do you want to write your own factual articles? Become an account holder!</span></p>
+			<button style="width: 140px; 
+				right: 5px;
+				height:50px;
+				vertical-align: middle; 
+				text-align: center;
+				background-color: lightblue">
+				<a href="{% url 'register' %}"> <h2> Sign up </h2> </a>
+			</button>
+		</div>
+				
+		
+		
+		
+				
+</body>
+
+</html>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+		<button style="width:120px;
+		float:left;
+		height:50px;"><a href="{% url 'browse' %}"><u><h2> Browse </h2></u></a></button>		
+		
+		
+		
+		<div class="content">
+			<br><br><br>
+			<br><br><br>
+			<br><br><br>
+			<div style="width:120px;
+			float:left;
+			height:50px;
+			left:300px;
+			top:30px;
+			color:blue;">Welcome back!</div>
+			
+			<div style="width:120px;
+			float:right;
+			height:50px;
+			left:1100px;
+			top:30px;
+			color:blue;">Do you want to write your own factual articles? Become an account holder!</div>
+			
+			
+			<button style="width:120px;
+			float:left;
+			height:50px;
+			vertical-align: middle; 
+			text-align: center;
+			"><a href="{% url 'login' %}"><h2>Login</h2></a></button>
+			
+			
+			<button style="width: 140px; 
+			float:right;
+			height:50px;
+			vertical-align: middle; 
+			text-align: center;
+			"><a href="{% url 'register' %}"><h2>Sign up</h2></a></button>
+			
+			<br><br><br>
+			
+		<div>
+		
+		-->
+		
+		
+		<!--
+		<div style="text-align:center;
+		display:inline-block; 
+		margin-top: 5px;
+		float:left;
+		color:green;">
+			<p>Browse through articles without an account!</p>
+			<button style="width:120px;
+				float:left;
+				height:50px;
+				vertical-align: middle; 
+				text-align: center;">
+				<a href="{% url 'browse' %}"> <h2> Browse </h2> </a>
+			</button>
+		</div>
+		-->
+		
+		
+		
+
