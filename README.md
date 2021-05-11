@@ -3,8 +3,6 @@ Object Oriented Analysis and Design with Software Engineering project using Djan
 
 Knowledge repository site using Django
 
-Project for 6th semester
-
 Django apps: "assimilate" and "whole"
 
 Django project: "ooad_lab"
