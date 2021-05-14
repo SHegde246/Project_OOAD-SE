@@ -1,5 +1,4 @@
 # OOAD-SE_Project
-Object Oriented Analysis and Design with Software Engineering project using Django
 
 Knowledge repository site using Django
 
